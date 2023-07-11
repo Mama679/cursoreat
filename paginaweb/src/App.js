@@ -16,10 +16,10 @@ class App extends React.Component{
       <React.Fragment>
           <Router>
             <Routes>
-                <Route exact path='/' element={<Home/>} />                 
-                <Route exact path="/nosotros" element={<Nosotros />}/>                                
-                <Route exact path="/productos" element={<Productos />}/>
-                <Route exact path="/contactos" element={<Contactos />}/> 
+                <Route exact path='/paginaweb' element={<Home/>} />                 
+                <Route exact path="/paginaweb/nosotros" element={<Nosotros />}/>                                
+                <Route exact path="/paginaweb/productos" element={<Productos />}/>
+                <Route exact path="/paginaweb/contactos" element={<Contactos />}/> 
             </Routes>      
           </Router>
       </React.Fragment>

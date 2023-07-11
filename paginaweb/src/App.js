@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import Nosotros from './components/nosotros/Nosotros';
 import Productos from './components/productos/Productos';
 import Contactos from './components/contactos/Contactos';
+import NotFound from './components/notfound/NotFound';
 
 class App extends React.Component{ 
   
@@ -20,6 +21,7 @@ class App extends React.Component{
                 <Route exact path="/paginaweb/nosotros" element={<Nosotros />}/>                                
                 <Route exact path="/paginaweb/productos" element={<Productos />}/>
                 <Route exact path="/paginaweb/contactos" element={<Contactos />}/> 
+                <Route path="*" element={<NotFound/>} />
             </Routes>      
           </Router>
       </React.Fragment>

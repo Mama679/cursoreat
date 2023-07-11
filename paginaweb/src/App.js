@@ -7,12 +7,14 @@ import Nosotros from './components/nosotros/Nosotros';
 import Productos from './components/productos/Productos';
 import Contactos from './components/contactos/Contactos';
 import NotFound from './components/notfound/NotFound';
+import Clientes from './components/cliente/Clientes';
+import Login from './components/login/Login';
 
 class App extends React.Component{ 
   
-
   render(){
-    
+  
+
     return(
       <React.Fragment>
           <Router>
@@ -21,6 +23,8 @@ class App extends React.Component{
                 <Route exact path="/paginaweb/nosotros" element={<Nosotros />}/>                                
                 <Route exact path="/paginaweb/productos" element={<Productos />}/>
                 <Route exact path="/paginaweb/contactos" element={<Contactos />}/> 
+                <Route exact path='/paginaweb/clientes' element={<Clientes/>} />
+                <Route exact path='/paginaweb/login' element={<Login/>} />
                 <Route path="*" element={<NotFound/>} />
             </Routes>      
           </Router>

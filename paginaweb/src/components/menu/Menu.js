@@ -2,7 +2,33 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 class Menu extends React.Component{
+    constructor(props){
+        super(props);
+
+        this.cerrarSesion = this.cerrarSesion.bind(this);
+    }
+
+    state = {
+        existe: false
+    };
+
+   
+    cerrarSesion = () =>{
+       localStorage.removeItem('Token');
+       window.location.href = './';
+        
+     }
+
+     inicioSesion = () =>{
+        window.location.href = './login';
+     }
     render(){
+
+        if(localStorage.getItem('Token') !== null){
+            this.setState.existe = true;
+        }
+        console.log( this.setState.existe)
+
         return(
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                  <Link to="/paginaweb" className="navbar-brand" >Mi Proyecto</Link>
@@ -23,11 +49,23 @@ class Menu extends React.Component{
                         <li className="nav-item">
                             <Link to="/paginaweb/contactos" className="nav-link">Contacto</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/paginaweb/clientes" className="nav-link">Clientes</Link>
+                        </li>
                     </ul>
                     <form className="form-inline mt-2 mt-md-0">
                         <input className="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar"/>
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
+                    <span className="mt-2 mt-md-0">
+                    {this.state.existe === true &&
+                       <button className="bbtn btn-outline-success my-2 my-sm-0" onClick={() => this.cerrarSesion()}> Salir</button>
+                    }
+
+                    {this.state.existe === false &&
+                       <button className="bbtn btn-outline-success my-2 my-sm-0" onClick={() => this.inicioSesion()}> Iniciar</button>
+                    }
+                    </span>
                  </div>
             </nav>
         );

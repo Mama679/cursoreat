@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; // CSS de bootstrap
+import '../node_modules/bootstrap/dist/js/bootstrap.min.js' // Archivo Javascript de bootstrap
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

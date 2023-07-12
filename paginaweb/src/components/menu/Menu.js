@@ -1,34 +1,45 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import BotonLogIn from "./BotonLogIn";
+import BotonLogoout from "./BotonLogout";
 
 class Menu extends React.Component{
     constructor(props){
         super(props);
-
-        this.cerrarSesion = this.cerrarSesion.bind(this);
+       this.state = {islogin: false};
     }
 
-    state = {
-        existe: false
-    };
-
+    componentDidMount(){
+        if(localStorage.getItem('Token') === null){
+           this.setState({islogin:false});
+        }
+        else{
+            this.setState({islogin:true});
+        }
+    }
    
-    cerrarSesion = () =>{
-       localStorage.removeItem('Token');
+    cerrarSesion = () =>{  
+       localStorage.clear();    
+       this.setState({islogin:false});  
        window.location.href = './';
-        
      }
 
      inicioSesion = () =>{
+        this.setState({islogin:true});
         window.location.href = './login';
      }
-    render(){
 
-        if(localStorage.getItem('Token') !== null){
-            this.setState.existe = true;
+    render(){   
+        const estalogueado = this.state.islogin;
+        let button;
+
+        if(estalogueado){
+            button =<BotonLogoout onClick={this.cerrarSesion} />
         }
-        console.log( this.setState.existe)
-
+        else{
+            button = <BotonLogIn onClick={this.inicioSesion}/>
+        }
+       
         return(
             <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                  <Link to="/paginaweb" className="navbar-brand" >Mi Proyecto</Link>
@@ -57,15 +68,7 @@ class Menu extends React.Component{
                         <input className="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar"/>
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
-                    <span className="mt-2 mt-md-0">
-                    {this.state.existe === true &&
-                       <button className="bbtn btn-outline-success my-2 my-sm-0" onClick={() => this.cerrarSesion()}> Salir</button>
-                    }
-
-                    {this.state.existe === false &&
-                       <button className="bbtn btn-outline-success my-2 my-sm-0" onClick={() => this.inicioSesion()}> Iniciar</button>
-                    }
-                    </span>
+                   {button}
                  </div>
             </nav>
         );

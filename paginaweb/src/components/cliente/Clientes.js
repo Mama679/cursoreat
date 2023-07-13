@@ -15,7 +15,11 @@ class Clientes extends React.Component{
          if(localStorage.getItem('Token') === null){
              window.location.href = './login';
          }
-         this.retrieveClientes();
+         else
+         {
+            this.retrieveClientes();
+         }
+         
      }
 
      
